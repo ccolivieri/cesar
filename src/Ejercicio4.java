@@ -2,6 +2,7 @@
 Crear un método llamado tipoTriangulo, que dado 3 valores enteros recibidos por parámetro,
 imprima en pantalla si es escaleno, si es equilátero o isósceles.
 * */
+import java.util.Scanner;
 
 public class Ejercicio4 {
 
@@ -25,10 +26,10 @@ public class Ejercicio4 {
 
         if(l1 == l2 && l1 == l3 && l2 == l3){
             System.out.println("Triángulo equilatero");
-        }else if(l1 == l2 && l1 != l3){
-            System.out.println("Triángulo isósceles");
-        }else{
+        }else if(l1 != l2 && l1 != l3 && l2 != l3){
             System.out.println("Triángulo escaleno");
+        }else{
+            System.out.println("Triángulo isósceles");
         }
     }
 }
