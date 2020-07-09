@@ -5,13 +5,14 @@ public class Producto {
     private int codigo;
     private boolean importado;
     private String nroLote;
-    private static final int NROPRODUCTO = 0;
+    private static int NROPRODUCTO = 0;
 
     public Producto(){
         this.nombre = "Desconocido";
         this.codigo = 0;
         this.importado = false;
         this.nroLote = "Desconocido";
+        incrementarProducto();
     }
 
     public Producto(String unNombre, int unCodigo, boolean unImportado, String unNroLote){
@@ -19,6 +20,7 @@ public class Producto {
         this.codigo = unCodigo;
         this.importado = unImportado;
         this.nroLote = unNroLote;
+        incrementarProducto();
     }
 
     public String getNombre() {
@@ -51,6 +53,10 @@ public class Producto {
 
     public void setNroLote(String nroLote) {
         this.nroLote = nroLote;
+    }
+
+    private void incrementarProducto(){
+        NROPRODUCTO++;
     }
 
     public String toString(){
