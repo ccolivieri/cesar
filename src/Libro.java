@@ -54,4 +54,8 @@ public class Libro {
     public String toString(){
         return "El libro con ISBN " + getIsbn() + " creado por el autor " + getAutor() + " tiene " + getNroPaginas() + " páginas";
     }
+
+    public boolean tieneAutor(){
+        return this.getAutor().equals(new String(""));
+    }
 }
