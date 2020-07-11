@@ -52,10 +52,11 @@ public class Libro {
     }
 
     public String toString(){
-        return "El libro con ISBN " + getIsbn() + " creado por el autor " + getAutor() + " tiene " + getNroPaginas() + " páginas";
+        return "El libro con ISBN " + this.getIsbn() + " creado por el autor " + this.getAutor() + " tiene " + this.getNroPaginas() + " páginas";
     }
 
-    public boolean tieneAutor(){
-        return this.getAutor().equals(new String(""));
+    public boolean tieneAutor(String str){
+
+        return this.getAutor().equals(new String(str));
     }
 }
