@@ -4,17 +4,17 @@ public class Libreria {
 
     private static Libro l1;
     private static Libro l2;
+    private static Scanner input = new Scanner(System.in);
 
     public static void main(String args[]){
         int isbn = 0;
         String titulo = null;
         String autor = null;
         int nroPaginas = 0;
-        Scanner input = new Scanner(System.in);
 
-        for (int i = 1; i <= 2 ; i++) {
-            crearLibro(i, titulo, autor, isbn, nroPaginas, input);
-        }
+        crearLibro(1, titulo, autor, isbn, nroPaginas, input);
+        crearLibro(2, titulo, autor, isbn, nroPaginas, input);
+
         System.out.println(l1.toString());
         System.out.println(l2.toString());
     }
