@@ -281,18 +281,12 @@ public class Ej_arreglos {
     todos los elementos son verdaderos.
     * */
     private static boolean todosVerdaderos(boolean[] arr){
-        boolean todos_verdaderos = false;
-        int c_verdaderos = 0;
 
         for (int i = 0; i < arr.length; i++) {
-            if(arr[i] == true){
-                c_verdaderos++;
+            if(arr[i] == false){
+                return false;
             }
         }
-
-        if(c_verdaderos == arr.length){
-            todos_verdaderos = true;
-        }
-        return todos_verdaderos;
+        return true;
     }
 }
