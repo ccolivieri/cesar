@@ -21,43 +21,56 @@ public class Ej_listas {
         imprimirListaEnteros(listaEnteros);
         imprimirListaStrings(listaStrings);
         System.out.println("Cantidad de elementos de la lista de enteros: " + contarEnteros(listaEnteros));
-        System.out.println("Lista de booleanos: " + estaVacia(listaBoleanos));
+
+        if(estaVacia(listaBoleanos) == true){
+            System.out.println("La lista de booleanos está vacía!");
+        }else {
+            System.out.println("La lista de booleanos no está vacía!");
+        }
+
+
         System.out.println("Promedio de lista de enteros: " + promedio(listaEnteros));
-        System.out.println("El menor valor de la lista d enteros es: " + menorElemento(listaEnteros));
+        System.out.println("El menor valor de la lista de enteros es: " + menorElemento(listaEnteros));
         System.out.println("El mayor valor de la lista de enteros es: " + mayorElemento(listaEnteros));
-        System.out.println("Son todos verdaderos la lista de booleanos?: " + todosVerdaderos(listaBoleanos));
+
+        if(todosVerdaderos(listaBoleanos)){
+            System.out.println("La lista de booleanos son todos verdaderos!");
+        }else {
+            System.out.println("La lista de booleanos no son todos verdaderos!");
+        }
+
     }
 
     private static void cargarListaStrings(ArrayList<String> lista){
         String palabra = "";
 
-        System.out.println("Para cargar la lista ingrese cadenas (Si ingresa null o Null terminará la carga)");
+        System.out.println("Para cargar la lista ingrese cadenas (Si ingresa la palabra 'fin' terminará la carga)");
         palabra = input.nextLine();
 
-        if(palabra.equals(new String(palabra)) == true){
+        if(palabra.equals(new String("fin")) != true){
             lista.add(palabra);
-        }else{
-            while (palabra.equals(new String(palabra)) != true){
-                System.out.println("Cargar palabra (si ingresa null o Null terminará la carga)");
-                palabra = input.nextLine();
+        }
+        while (palabra.equals(new String("fin")) != true){
+            System.out.println("Cargar palabra (Si ingresa la palabra 'fin' terminará la carga)");
+            palabra = input.nextLine();
+
+            if(palabra.equals(new String("fin")) != true){
                 lista.add(palabra);
             }
         }
     }
 
     private static void cargarListaBooleanos(ArrayList<Boolean> lista){
-        boolean bol;
+        int bol = -2;
 
-        System.out.println("Para cargar la lista ingrese booleanos (Si ingresa null o Null terminará la carga)");
-        bol = input.nextBoolean();
+        while (bol != -1){
+            System.out.println("Para cargar la lista ingrese booleanos ingrese 1 = true o 0 = false (si ingresa -1 terminará la carga)");
+            bol = input.nextInt();
 
-        if(bol == true){
-            lista.add(bol);
-        }else{
-            while (bol != true){
-                System.out.println("Cargar palabra (si ingresa null o Null terminará la carga)");
-                bol = input.nextBoolean();
-                lista.add(bol);
+            if(bol == 1){
+                lista.add(true);
+            }else if(bol == 0){
+                lista.add(false);
             }
         }
     }
@@ -115,7 +128,7 @@ public class Ej_listas {
 
     //Método que reciba una lista de enteros, y retorne el menor.
     private static int menorElemento(ArrayList<Integer> lista){
-        int menor = Integer.MIN_VALUE;
+        int menor = lista.get(0);
 
         for (int i = 0; i < lista.size(); i++) {
             if(menor > lista.get(i)){
@@ -127,7 +140,7 @@ public class Ej_listas {
 
     //Método que reciba una lista de enteros, y retorne el mayor.
     private static int mayorElemento(ArrayList<Integer> lista){
-        int mayor = Integer.MAX_VALUE;
+        int mayor = lista.get(0);
 
         for (int i = 0; i < lista.size(); i++) {
             if(mayor < lista.get(i)){
@@ -162,7 +175,7 @@ public class Ej_listas {
         ArrayList<Integer> lista = new ArrayList<Integer>();
         int valor = 0;
 
-        System.out.println("Ingrese un valor a almacenar en el array:");
+        System.out.println("Ingrese un valor a almacenar en el array de enteros:");
         valor = input.nextInt();
 
         if(valor == -99){
@@ -170,7 +183,7 @@ public class Ej_listas {
         }else {
             lista.add(valor);
             while (valor != -99){
-                System.out.println("Ingrese otro valor a almacenar en el array (-99 finaliza la carga):");
+                System.out.println("Ingrese otro valor a almacenar en el array de enteros (-99 finaliza la carga):");
                 valor = input.nextInt();
                 if(valor == -99){
                     return lista;
