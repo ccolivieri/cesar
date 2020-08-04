@@ -5,6 +5,7 @@ public class Perecedero extends Producto{
     public Perecedero(String unNombre, float unPrecio, int diasCaducar){
         super(unNombre, unPrecio);
         this.diasCaducar = diasCaducar;
+        this.setPeso(Constantes.PESO_PERECEDERO);
     }
 
     public int getDiasCaducar() {

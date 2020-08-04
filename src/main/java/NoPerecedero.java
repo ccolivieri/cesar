@@ -5,6 +5,7 @@ public class NoPerecedero extends Producto{
     public NoPerecedero(String unNombre, float unPrecio, String unTipo){
         super(unNombre, unPrecio);
         this.tipo = unTipo;
+        this.setPeso(Constantes.PESO_NO_PERECEDERO);
     }
 
     public String getTipo() {
