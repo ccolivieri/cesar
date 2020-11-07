@@ -8,27 +8,16 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.concurrent.TimeUnit;
-
-public class BbcLandingPage {
-
-    private WebDriver driver;
+public class BbcLandingPage extends BbcBasePage{
 
     public BbcLandingPage(WebDriver aDriver){
+        super(aDriver);
         PageFactory.initElements(aDriver, this);
-        this.driver = aDriver;
     }
 
     public String registrarUsuarioMayor(){
 
-        driver.findElement(By.id("idcta-link")).click();
-        driver.findElement(By.xpath("//span[contains(text(), 'Register now')]")).click();
-
-        WebDriverWait waitButton = new WebDriverWait(driver, 10);
-        boolean invisible =waitButton.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='spinner spinner--fill']")));
-        if(invisible){
-            driver.findElement(By.xpath("(//a[@class = 'button'])[2]")).click();
-        }
+        clickOnRegisterNow();
 
         WebDriverWait waitInput = new WebDriverWait(driver, 10);
         WebElement mes = driver.findElement(By.id("month-input"));
@@ -42,14 +31,8 @@ public class BbcLandingPage {
     }
 
     public boolean registrarUsuarioMayor(String dia, String mes, String año){
-        driver.findElement(By.id("idcta-link")).click();
-        driver.findElement(By.xpath("//span[contains(text(), 'Register now')]")).click();
 
-        WebDriverWait waitButton = new WebDriverWait(driver, 10);
-        boolean invisible =waitButton.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='spinner spinner--fill']")));
-        if(invisible){
-            driver.findElement(By.xpath("(//a[@class = 'button'])[2]")).click();
-        }
+        clickOnRegisterNow();
 
         driver.findElement(By.id("day-input")).sendKeys(dia);
         driver.findElement(By.id("month-input")).sendKeys(mes);
@@ -64,14 +47,8 @@ public class BbcLandingPage {
     }
 
     public boolean registrarUsuarioMayor(String dia, String mes, String año,String email, String password){
-        driver.findElement(By.id("idcta-link")).click();
-        driver.findElement(By.xpath("//span[contains(text(), 'Register now')]")).click();
 
-        WebDriverWait waitButton = new WebDriverWait(driver, 10);
-        boolean invisible =waitButton.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='spinner spinner--fill']")));
-        if(invisible){
-            driver.findElement(By.xpath("(//a[@class = 'button'])[2]")).click();
-        }
+        clickOnRegisterNow();
 
         driver.findElement(By.id("day-input")).sendKeys(dia);
         driver.findElement(By.id("month-input")).sendKeys(mes);

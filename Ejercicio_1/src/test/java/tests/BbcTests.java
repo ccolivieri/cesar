@@ -35,12 +35,8 @@ public class BbcTests {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
-    @Test(groups = {"escenarios_1234"}, priority = 1)
+    @Test(groups = {"escenarios_1234"})
     public void validarTitulos(){
-
-        String titulo1 = "BBC - Homepage";
-        String titulo2 = "Home - BBC News";
-        String titulo3 = "BBC - Sign in";
         int contador_links = 0;
 
         List<WebElement> listH1 = driver.findElements(By.tagName("h1"));
@@ -62,45 +58,43 @@ public class BbcTests {
             contador_links++;
         }
 
-        Assert.assertEquals(driver.getTitle(), titulo1);
+        Assert.assertEquals(driver.getTitle(), Constants.BBC_HOMEPAGE);
 
         driver.findElement(By.xpath("(//a[contains(text(), 'News')])[1]")).click();
-        Assert.assertEquals(driver.getTitle(), titulo2);
+        Assert.assertEquals(driver.getTitle(), Constants.BBC_NEWS);
 
         driver.findElement(By.xpath("//button[contains(text(), 'Maybe later')]")).click();
         driver.findElement(By.id("idcta-link")).click();
         driver.findElement(By.xpath("//span[contains(text(), 'Register now')]")).click();
 
-        Assert.assertEquals(driver.getTitle(), titulo3);
+        Assert.assertEquals(driver.getTitle(), Constants.BBC_SIGN_IN);
     }
 
     @Parameters({"opcionMenu"})
-    @Test(groups = {"escenarios_1234"}, priority = 2)
+    @Test(groups = {"escenarios_1234"})
     public void ingresoOpcionMenu(@Optional("2") int opc){
-        driver.navigate().back();
-        driver.navigate().back();
 
         switch(opc){
             case 1: driver.findElement(By.xpath("//a[contains(text(), 'News')])[1]")).click();
-                    Assert.assertEquals(driver.getCurrentUrl(), Constants.URL_BBC_NEWS);
+                    Assert.assertTrue(driver.getCurrentUrl().contains("news"));
                     break;
             case 2: driver.findElement(By.xpath("(//a[contains(text(), 'Sport')])[1]")).click();
-                    Assert.assertEquals(driver.getCurrentUrl(), Constants.URL_BBC_SPORTS);
+                    Assert.assertTrue(driver.getCurrentUrl().contains("sport"));
                     break;
             case 3: driver.findElement(By.xpath("(//a[contains(text(), 'Reel')])[1]")).click();
-                    Assert.assertEquals(driver.getCurrentUrl(), Constants.URL_BBC_REEL);
+                    Assert.assertTrue(driver.getCurrentUrl().contains("reel"));
                     break;
             case 4: WebDriverWait wait = new WebDriverWait(driver, 5);
                     wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("(//a[contains(text(), 'Worklife')])[1]")))).click();
-                    Assert.assertEquals(driver.getCurrentUrl(), Constants.URL_BBC_WORKLIFE);
+                    Assert.assertTrue(driver.getCurrentUrl().contains("worklife"));
                     break;
             case 5: driver.findElement(By.xpath("(//a[contains(text(), 'Travel')])[1]")).click();
-                    Assert.assertEquals(driver.getCurrentUrl(), Constants.URL_BBC_TRAVEL);
+                    Assert.assertTrue(driver.getCurrentUrl().contains("travel"));
                     break;
         }
     }
 
-    @Test(groups = {"escenarios_1234"}, priority = 3)
+    @Test(groups = {"escenarios_1234"})
     public void registrarUsuarioMenor(){
         boolean invisible = false;
 
@@ -122,16 +116,14 @@ public class BbcTests {
         }
 
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        driver.findElement(By.xpath("//a[@href = 'https://www.bbc.com']")).click();
-        //driver.findElement(By.xpath("//button[contains(text(), 'Maybe later')]")).click();
+        driver.findElement(By.xpath("//button[contains(text(), 'Maybe later')]")).click();
         Assert.assertEquals(driver.getCurrentUrl(), "https://www.bbc.com/");
     }
 
-    @Test(groups = {"escenarios_1234"}, priority = 4)
+    @Test(groups = {"escenarios_1234"})
     public void registrarUsuarioMayor(){
         String msgError = "Oops, that day and year don't look right. Make sure it's a real date written as DD-MM-YYYY e.g. the 5th of June 2009 is 05-06-2009.";
 
-        //driver.findElement(By.xpath("(//a[@href='http://www.bbc.co.uk'])[1]")).click();
         driver.findElement(By.id("idcta-link")).click();
         driver.findElement(By.xpath("//span[contains(text(), 'Register now')]")).click();
 
