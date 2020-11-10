@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name='Tests'>
+    <test name="TestBBC">
+
+        <parameter name = "opcionMenu" value = "4"></parameter>
+
+        <groups>
+            <run>
+                <include name = "escenarios_1234"/>
+                <exclude name = "escenarios_567"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="tests.BbcTests"/>
+        </classes>
+    </test>
+</suite>
