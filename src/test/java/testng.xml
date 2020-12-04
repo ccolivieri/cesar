@@ -1,0 +1,7 @@
+<suite name = "Tests">
+    <test name = "TestBooking">
+        <classes>
+            <class name = "PageObjects.Prueba_Booking"/>
+        </classes>
+    </test>
+</suite>
